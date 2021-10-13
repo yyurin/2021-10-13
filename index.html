@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> 오늘의 주식 </title>
+
+</head>
+<style type="text/css">
+	@font-face {
+    font-family: 'ChosunGs';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGs.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+	body{
+			background-image: url(img.png);
+			background-repeat: no-repeat;
+			background-size: cover;
+			font-family: 'ChosunGs';
+			color: black;
+			align-content: center;
+			justify-content: center;
+			}
+
+		.title{width: 550px;}
+		#title{z-index: 9;position: absolute;left: 320px; top: 85px; animation: bubble 1.5s ease-in-out infinite alternate;}
+		@keyframes bubble{from{top: 170px;} to{top: 120px;}}
+
+	
+		.icon{position: absolute;left: 0; top: 0;}
+		#img{position: absolute;left: 470px; top: 50px; width: 200px;}
+
+		#poetText{z-index: 9; position: absolute; left: 420px; top: 230px; font-size: 1.5em; line-height: 2;}
+      .word{opacity: 0; animation: fadein 0.5s forwards; animation-iteration-count: 1;}
+      @keyframes fadein{
+         to{opacity: 1;}
+
+         #text{z-index: 9;position: absolute;left: 210px; top: 50px; animation: bubble 1.5s ease-in-out infinite alternate;}
+		@keyframes bubble{from{top: 170px;} to{top: 120px;}}
+
+
+	</style>
+		
+<body>
+<div id="title">
+	<img src="title.png" class="title">
+</div>
+<div id="stock">
+	<img src="tt.png" id="img">
+</div>
+
+ <div id="poetText" id="text"></div>
+	
+	
+
+</body>
+
+<script type="text/javascript">
+
+	var a = ["coin.1","coin.2","coin.3","coin.4"];
+
+	a[0] 
+		
+	for(var i=0;i<10;i++){
+		var t = document.createElement("img");
+		t.src = a[randomBH(0,2)] + ".png";
+		t.className = "icon";
+		t.style.width = randomBH(100,200) + "px";
+		t.style. height = "auto";
+		t.style.left = Math.random()*screen.availWidth-200 + "px";
+		t.style.top = Math.random()*screen.availHeight-260 + "px";
+		document.body.appendChild(t);
+	}	
+
+		function randomBH(min, max) {
+		  min = Math.ceil(min);
+		  max = Math.floor(max);
+		  return Math.floor(Math.random() * (max - min + 1)) + min;
+		}
+
+var poet = "오늘의 TOP 5<br> <br> 1. 주식을 사기 보단 때를 사라.<br>2. 차트는 시세의 길잡이다.<br> 3. 숲을 먼저 보고 나무를 봐라.<br> 4. 사는 것 보다 파는 것이 더 중요하다.<br> 5. 자신에게 맞는 투자 방법을 개발하라.<br>";
+
+   var poetArr = poet.split(" ");
+
+   var myTime = setInterval(print,500);
+   var s = 0;
+   function print(){
+      var t = document.createElement("span");
+      t.innerHTML = poetArr[s] + " ";
+      t.className = "word";
+      s++;
+      poetText.appendChild(t);
+
+      if(s == poetArr.length){
+         clearInterval(myTime)
+      }
+   }
+</script>
+</html>
